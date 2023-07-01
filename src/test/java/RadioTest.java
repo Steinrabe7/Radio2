@@ -1,7 +1,8 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class RadioTestClass {
+public class RadioTest {
+
     @Test
     public void selectedStation() {
         Radio stat = new Radio();
@@ -180,6 +181,5 @@ public class RadioTestClass {
 
         Assertions.assertEquals(expected, actual);
     }
-
 
 }
