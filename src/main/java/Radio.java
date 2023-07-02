@@ -1,17 +1,29 @@
 public class Radio {
-    private int currentRadioStation;
+    private int amountStation = 10;
+    private int currentRadioStation = getCurrentRadioStation();
     private int currentVolume;
+
+    public Radio(int amountStation) {
+        this.amountStation = amountStation;
+    }
+    public Radio() {
+        amountStation = getAmountStation();
+    }
+    public int getAmountStation() {
+        return amountStation;
+    }
+
 
     public int getCurrentRadioStation() {
         return currentRadioStation;
     }
 
     public void setCurrentRadioStation(int newCurrentRadioStation) {
-        if (newCurrentRadioStation > 9) {
+        if (newCurrentRadioStation == amountStation) {
             newCurrentRadioStation = 0;
         }
-        if (newCurrentRadioStation < 0) {
-            newCurrentRadioStation = 9;
+        else if (newCurrentRadioStation == 0) {
+            newCurrentRadioStation = amountStation;
         }
         currentRadioStation = newCurrentRadioStation;
 
@@ -25,7 +37,7 @@ public class Radio {
         if (newCurrentVolume > 100) {
             newCurrentVolume = 100;
         }
-        if (newCurrentVolume < 0) {
+        else if (newCurrentVolume < 0) {
             newCurrentVolume = 0;
         }
         currentVolume = newCurrentVolume;
@@ -45,15 +57,16 @@ public class Radio {
     }
 
     public void switchingToPreviousStation() {
-        if (currentRadioStation == 0) {
-            currentRadioStation = 9;
-        } else {
-            currentRadioStation = currentRadioStation - 1;
+        if (currentRadioStation <= amountStation) {
+            currentRadioStation = currentRadioStation -1;
+        }
+        if (currentRadioStation <0) {
+            currentRadioStation = amountStation - 1;
         }
     }
 
     public void switchingToNextStation() {
-        if (currentRadioStation == 9) {
+        if (currentRadioStation == amountStation -1) {
             currentRadioStation = 0;
         } else {
             currentRadioStation = currentRadioStation + 1;

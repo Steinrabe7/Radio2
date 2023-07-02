@@ -33,9 +33,9 @@ public class RadioTest {
     public void maxRadioStation() {
         Radio stat = new Radio();
 
-        stat.setCurrentRadioStation(-1);
+        stat.setCurrentRadioStation(0);
 
-        int expected = 9;
+        int expected = 10;
         int actual = stat.getCurrentRadioStation();
 
         Assertions.assertEquals(expected, actual);
@@ -178,6 +178,31 @@ public class RadioTest {
 
         int expected = 0;
         int actual = stat.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+
+    public void constructorChecking() {
+        Radio stat = new Radio(30);
+        stat.setCurrentRadioStation(0);
+
+        Assertions.assertEquals(30, stat.getAmountStation());
+        Assertions.assertEquals(30, stat.getCurrentRadioStation());
+
+    }
+
+    @Test
+
+    public void DoubleClickToPreviousStation() {
+        Radio stat = new Radio();
+
+        stat.setCurrentRadioStation(-1);
+        stat.switchingToPreviousStation();
+
+        int expected = 9;
+        int actual = stat.getCurrentRadioStation();
 
         Assertions.assertEquals(expected, actual);
     }
